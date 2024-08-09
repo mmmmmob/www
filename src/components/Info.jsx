@@ -2,7 +2,7 @@ function Info() {
   return (
     <div className="mx-5 self-center rounded-lg bg-slate-500/10 p-10 md:w-8/12">
       <article className="prose-h2:prose-lg dark:prose-invert">
-        <h2 className="text-justify font-light tracking-tight">
+        <h2 className="text-justify tracking-tight">
           Former creative copywriter and project manager, now on my way to{" "}
           <a className="font-mono font-bold underline decoration-red-600 decoration-double decoration-1 hover:decoration-red-300 dark:decoration-sky-400 dark:hover:decoration-sky-200">
             becoming a developer
