@@ -38,12 +38,12 @@ export const NowPlaying = (props) => {
       {loading && (
         <p className="w-fit self-center text-center text-xs">Loading...</p>
       )}
-      {!loading && !isPlaying && isNull &&(
+      {!loading && !isPlaying &&(
         <div className="my-2 flex w-fit self-center truncate">
           <div className="self-center">
             <BiSolidBarChartAlt2 size={20} className="mx-1" />
           </div>
-          <p className="w-fit self-end text-xs">Currently Offline</p>
+          <p className="w-fit self-end text-xs">{isNull ? "Now Listening to a Podcast" : "Currently Offline"}</p>
         </div>
       )}
       {!loading && isPlaying && (
