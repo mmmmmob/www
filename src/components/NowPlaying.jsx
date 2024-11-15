@@ -6,6 +6,7 @@ export const NowPlaying = (props) => {
   const [loading, setLoading] = useState(true);
   const [result, setResult] = useState({});
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isNull, setIsNull] = useState(false);
 
   const fetchNowPlaying = () => {
     getNowPlayingItem(props.client_id, props.client_secret, props.refresh_token)
@@ -14,8 +15,9 @@ export const NowPlaying = (props) => {
         setLoading(false);
         setIsPlaying(result.isPlaying);
       })
-      .catch((error) => {
-        console.error("Error fetching now playing item:", error);
+      .catch(() => {
+        setIsNull(true)
+        setLoading(false)
       });
   };
 
@@ -36,7 +38,7 @@ export const NowPlaying = (props) => {
       {loading && (
         <p className="w-fit self-center text-center text-xs">Loading...</p>
       )}
-      {!loading && !isPlaying && (
+      {!loading && !isPlaying && isNull &&(
         <div className="my-2 flex w-fit self-center truncate">
           <div className="self-center">
             <BiSolidBarChartAlt2 size={20} className="mx-1" />
