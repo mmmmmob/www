@@ -5,8 +5,8 @@ function Footer() {
       <div className="ml-5 flex w-fit self-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="14"
-          height="14"
+          width="20"
+          height="20"
           viewBox="0 0 35 35"
           fill="none"
           className="mr-2 self-center fill-slate-300"
@@ -21,7 +21,7 @@ function Footer() {
             </clipPath>
           </defs>
         </svg>
-        <div className="self-center font-fkDisplay text-xs">
+        <div className="self-center mt-0.5 font-fkDisplay text-xs">
           <a
             href="https://creativecommons.org/licenses/by-sa/4.0/"
             target="_blank"
