@@ -1,15 +1,14 @@
 import { BiSolidBarChartAlt2 } from "react-icons/bi";
 import { SpotifyRequestHeader } from "../types/Spotify.ts";
-import {useNowPlaying} from "../hooks/useNowPlaying.ts";
+import { useNowPlaying } from "../hooks/useNowPlaying.ts";
+import { SPOTIFY_CONFIG } from "../utils/config.ts";
 
-const client_id = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
-const client_secret = import.meta.env.VITE_APP_SPOTIFY_CLIENT_SECRET;
-const refresh_token = import.meta.env.VITE_APP_SPOTIFY_REFRESH_TOKEN;
+const client_id = SPOTIFY_CONFIG.client_id;
+const client_secret = SPOTIFY_CONFIG.client_secret;
+const refresh_token = SPOTIFY_CONFIG.refresh_token;
 
 const requestHeader: SpotifyRequestHeader = {
-  client_id,
-  client_secret,
-  refresh_token,
+  client_id, client_secret, refresh_token
 };
 
 export const NowPlaying = () => {
