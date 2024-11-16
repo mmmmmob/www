@@ -3,7 +3,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Info from "./components/Info";
-//import { NowPlaying } from "./components/NowPlaying";
+import { NowPlaying } from "./components/NowPlaying";
 import Project from "./components/Projects";
 import Title from "./components/Title";
 import WorkExp from "./components/WorkExp";
@@ -25,7 +25,7 @@ function App() {
           </div>
         </main>
         <footer className="sticky bottom-0 w-full">
-          {/*<NowPlaying />*/}
+          <NowPlaying />
           <Footer />
         </footer>
       </div>
