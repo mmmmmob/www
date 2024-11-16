@@ -1,5 +1,5 @@
 import React from "react";
-import { StackElement } from "../types/Stack.ts";
+import { StackElement } from "../../types/Stack.ts";
 
 const StacksTag = (stack: StackElement) => {
   return (

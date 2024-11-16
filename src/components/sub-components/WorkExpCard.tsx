@@ -1,4 +1,4 @@
-import { WorkExperienceDesc } from "../types/WorkExperience.ts";
+import { WorkExperienceDesc } from "../../types/WorkExperience.ts";
 
 function WorkExpCard(experience: WorkExperienceDesc) {
   return (
