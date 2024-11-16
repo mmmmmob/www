@@ -1,12 +1,12 @@
-import CurrentTime from "./snippets/CurrentTime.tsx";
-import ModeToggle from "./snippets/ModeToggle.tsx";
+import Footer from "./components/Footer.tsx";
+import Header from "./components/Header.tsx";
 
 const App = () => {
   return (
     <div className="flex min-h-screen flex-col bg-slate-200 font-fkDisplay text-slate-800 dark:bg-slate-900 dark:text-slate-300">
+      <Header />
       <h1>hello world</h1>
-      <CurrentTime />
-      <ModeToggle />
+      <Footer />
     </div>
   );
 };
