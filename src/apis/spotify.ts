@@ -34,7 +34,9 @@ const getAccessToken = async (
 };
 
 // Helper function to fetch raw currently playing data from Spotify API => using getAccessToken()
-export const getNowPlaying = async (requestHeader: SpotifyRequestHeader) => {
+export const getNowPlaying = async (
+  requestHeader: SpotifyRequestHeader,
+): Promise<SpotifyNowPlayingResponse> => {
   const { access_token } = await getAccessToken(requestHeader);
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
@@ -44,7 +46,7 @@ export const getNowPlaying = async (requestHeader: SpotifyRequestHeader) => {
   if (!response.ok) {
     throw new Error(`Failed to fetch now playing: ${response.statusText}`);
   }
-  return response;
+  return response.json();
 };
 
 // Helper function to transform raw api response to our usable data
@@ -65,13 +67,9 @@ export default async function getNowPlayingItem(
   requestHeader: SpotifyRequestHeader,
 ): Promise<NowPlayingResponse | false> {
   try {
-    const response = await getNowPlaying(requestHeader);
-    if (response.status === 204) {
-      return false;
-    }
+    const response = await getNowPlaying(requestHeader)
     // Retrieve raw data as its type then clean data as return type
-    const song: SpotifyNowPlayingResponse = await response.json();
-    return transformSpotifyResponse(song);
+    return transformSpotifyResponse(response);
   } catch (error) {
     console.error("Error fetching now playing item:", error);
     return false;
