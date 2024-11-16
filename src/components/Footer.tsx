@@ -32,7 +32,7 @@ const Footer = () => {
         </div>
       </div>
       {/* right-side footer [social emblems] */}
-      <div className="mr-5 flex w-56 justify-between self-center md:w-80">
+      <div className="mr-5 flex w-48 justify-between self-center md:w-72">
         {/* GitHub */}
         <a href="https://github.com/mmmmmob" target="_blank">
           <svg
