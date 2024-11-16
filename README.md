@@ -1,50 +1,93 @@
-# React + TypeScript + Vite
+# theppitak.me
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Theppitak M_](https://github.com/mmmmmob/me.theppitak/assets/141404845/29d12b14-2540-4953-9c58-075005d9442d)
 
-Currently, two official plugins are available:
+theppitak.me , my portfolio site built with React, NPM, and Vite. Design with cleanliness and simplicity in mind.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## Expanding the ESLint configuration
+- [theppitak.me](#theppitakme)
+    - [Table of Contents](#table-of-contents)
+    - [Features](#features)
+    - [Demo](#demo)
+    - [Getting Started](#getting-started)
+        - [Prerequisites](#prerequisites)
+        - [Installation](#installation)
+        - [Running the Project](#running-the-project)
+        - [Now Playing Bar](#now-playing-bar)
+    - [Technologies Used](#technologies-used)
+    - [Contributing](#contributing)
+    - [License](#license)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- Responsive design
+- Dark mode support
+- Projects showcase
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Demo
+
+Check out the live demo [here](https://theppitak.me).
+
+## Getting Started
+
+Follow these instructions to set up and run the project on your local machine.
+
+### Prerequisites
+
+Ensure you have the following tools installed:
+
+- [Node.js](https://nodejs.org/)
+
+### Installation
+
+1. Clone or create your own respository from template:
+
+   ```sh
+   git clone https://github.com/mmmmmob/www.git
+   cd www
+   ```
+
+2. Install dependencies using Bun:
+
+   ```sh
+   npm install
+   ```
+
+### Running the Project
+
+Start the development server:
+
+```sh
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Open your browser and visit `http://localhost:5173` or the address as shown in your terminal to see your portfolio.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Now Playing Bar
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+The Now Playing Bar at the bottom pf the page uses Spotify's Now Playing API to retrieve information about your current listening song and render the data live on your site
+
+Refer to the `.env.example` file to learn how to obtain your credential tokens from the Spotify Developer website. Use these tokens in production by creating a `.env.local` file in your folder. Remember to set the actual environment variables on your deployment platform.
+
+You can opt-out of this feature by removing the `<NowPlaying/>` component from `App.jsx`.
+
+## Technologies Used
+
+- **Frontend**: [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/), [daisyUI](https://daisyui.com/) and [react-icons](https://react-icons.github.io/react-icons/)
+- **Bundler**: [Vite](https://vitejs.dev/)
+- **JavaScript Runtime and Package Manager**: [Node.js](https://nodejs.org/)
+
+## Contributing
+
+Contributions are welcome! Please fork this repository and submit a pull request for any feature requests, bug fixes, or improvements.
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/YourFeature`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/YourFeature`
+5. Open a pull request
+
+## License
+
+This project is licensed under the Creative Commons license. See the [LICENSE](LICENSE) file for details.
