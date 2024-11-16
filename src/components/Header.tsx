@@ -1,5 +1,5 @@
-import CurrentTime from "../snippets/CurrentTime.tsx";
-import ModeToggle from "../snippets/ModeToggle.tsx";
+import CurrentTime from "./snippets/CurrentTime.tsx";
+import ModeToggle from "./snippets/ModeToggle.tsx";
 
 const Header = () => {
   return (

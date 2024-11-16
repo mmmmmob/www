@@ -1,6 +1,6 @@
-import StacksTag from "./StackTag";
-import { ProjectElement } from "../types/Projects.ts";
-import { Stack } from "../types/Stack.ts";
+import StacksTag from "./StackTag.tsx";
+import { ProjectElement } from "../../types/Projects.ts";
+import { Stack } from "../../types/Stack.ts";
 
 function ProjectCard(project: ProjectElement) {
   return (
