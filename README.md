@@ -72,6 +72,8 @@ Refer to the `.env.example` file to learn how to obtain your credential tokens f
 
 You can opt-out of this feature by removing the `<NowPlaying/>` component from `App.jsx`.
 
+(special thanks for initial code reference before adjustments from [@theodorusclarence](https://github.com/theodorusclarence) blog [post](https://theodorusclarence.com/blog/spotify-now-playing))
+
 ## Technologies Used
 
 - **Frontend**: [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/), [daisyUI](https://daisyui.com/) and [react-icons](https://react-icons.github.io/react-icons/)
