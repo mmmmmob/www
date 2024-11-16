@@ -6,7 +6,7 @@ enum Mode {
   Dark = "dark",
 }
 
-function ModeToggle(): Element {
+function ModeToggle() {
   const [theme, setTheme] = useState((): Mode => {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       return Mode.Dark;
