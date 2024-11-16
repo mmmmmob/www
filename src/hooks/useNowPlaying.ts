@@ -43,5 +43,5 @@ export const useNowPlaying = (requestHeader: SpotifyRequestHeader): UseNowPlayin
         return () => clearInterval(intervalId);
     },[]);
 
-    return {result, isNull, isLoading, isPlaying };
+    return { result, isNull, isLoading, isPlaying };
 }

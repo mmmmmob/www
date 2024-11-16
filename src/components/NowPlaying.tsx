@@ -14,7 +14,6 @@ const requestHeader: SpotifyRequestHeader = {
 
 export const NowPlaying = () => {
   const { isPlaying, isNull, isLoading, result } = useNowPlaying(requestHeader);
-
   return (
     <div className="flex h-8 w-screen justify-center bg-emerald-950/60 text-slate-300 shadow backdrop-blur-md">
       {isLoading && (
