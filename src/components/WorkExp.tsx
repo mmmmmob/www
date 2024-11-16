@@ -3,12 +3,22 @@ import { WorkExperience } from "../types/WorkExperience.ts";
 
 const experiences: WorkExperience[] = [
   {
-    id: 1,
+    id: 4,
     description: {
-      duration: "Mar 2024 - Present",
+      duration: "Oct 2024 - Present",
+      workplace: "T.C.C. Technology",
+      url: "https://www.tcc-technology.com/",
+      title: "Front-end Web Developer",
+      desc: "It's been quite a journey applying for a job as a junior developer at my age, but this opportunity is one I’m truly hopeful for! Joining an energetic team of experienced developers, I look forward to learning more as a developer in a professional environment and working on fully-packed projects with real clients.",
+    },
+  },
+  {
+    id: 3,
+    description: {
+      duration: "Mar 2024 - Jul 2024",
       workplace: "Self-studied",
       url: "https://www.linkedin.com/in/theppitak-m/details/certifications/",
-      title: "iOS Mobile Developer",
+      title: "iOS Mobile Developer Student",
       desc: "Since high school, I've always been passionate about Apple platform. After finishing the bootcamp, I decided to dive into native iOS development. I taught myself Swift through online courses and various hands-on projects. After two months, I created my first native iOS application, Lotto Journal.",
     },
   },
@@ -23,7 +33,7 @@ const experiences: WorkExperience[] = [
     },
   },
   {
-    id: 3,
+    id: 1,
     description: {
       duration: "Nov 2028 - Dec 2022",
       workplace: "Glow Story",
