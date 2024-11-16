@@ -1,4 +1,4 @@
-export type SpotifyAPITokenReturn = {
+export type SpotifyTokenReturn = {
   access_token: string;
   expires_in: number;
   scope: string;
@@ -11,7 +11,7 @@ export type SpotifyRequestHeader = {
   refresh_token: string;
 };
 
-export type SpotifyPlaybackResponse = {
+export type SpotifyNowPlayingResponse = {
   is_playing: boolean;
   item?: {
     album: {

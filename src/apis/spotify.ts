@@ -1,17 +1,18 @@
 import querystring from "querystring";
 import {
   NowPlayingResponse,
-  SpotifyAPITokenReturn,
-  SpotifyPlaybackResponse,
+  SpotifyNowPlayingResponse,
   SpotifyRequestHeader,
+  SpotifyTokenReturn,
 } from "../types/Spotify.ts";
 
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
 
+// Helper function to create personal Access Token
 const getAccessToken = async (
   identValue: SpotifyRequestHeader,
-): Promise<SpotifyAPITokenReturn> => {
+): Promise<SpotifyTokenReturn> => {
   const basic = Buffer.from(
     `${identValue.client_id}:${identValue.client_secret}`,
   ).toString("base64");
@@ -32,6 +33,7 @@ const getAccessToken = async (
   return response.json();
 };
 
+// Helper function to fetch raw currently playing data from Spotify API => using getAccessToken()
 export const getNowPlaying = async (requestHeader: SpotifyRequestHeader) => {
   const { access_token } = await getAccessToken(requestHeader);
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
@@ -45,8 +47,9 @@ export const getNowPlaying = async (requestHeader: SpotifyRequestHeader) => {
   return response;
 };
 
+// Helper function to transform raw api response to our usable data
 export const transformSpotifyResponse = (
-  song: SpotifyPlaybackResponse,
+  song: SpotifyNowPlayingResponse,
 ): NowPlayingResponse => {
   return {
     albumImageUrl: song.item?.album.images[0]?.url,
@@ -57,6 +60,7 @@ export const transformSpotifyResponse = (
   };
 };
 
+// Full fetch function to be using in NowPlaying component
 export default async function getNowPlayingItem(
   requestHeader: SpotifyRequestHeader,
 ): Promise<NowPlayingResponse | false> {
@@ -65,7 +69,8 @@ export default async function getNowPlayingItem(
     if (response.status === 204) {
       return false;
     }
-    const song: SpotifyPlaybackResponse = await response.json();
+    // Retrieve raw data as its type then clean data as return type
+    const song: SpotifyNowPlayingResponse = await response.json();
     return transformSpotifyResponse(song);
   } catch (error) {
     console.error("Error fetching now playing item:", error);

@@ -25,6 +25,7 @@ export const NowPlaying = () => {
       const value = await getNowPlayingItem(requestHeader);
       if (!value) {
         setIsPlaying(false);
+      } else if (value.songUrl === undefined && value.isPlaying) { // playing podcast episode won't return item but isPlaying will be true
         setIsNull(true);
       } else {
         setResult(value);
@@ -33,7 +34,7 @@ export const NowPlaying = () => {
       }
     } catch (error) {
       console.error("Error fetching now playing data:", error);
-      setIsNull(true);
+      setIsPlaying(false);
     } finally {
       setLoading(false);
     }
