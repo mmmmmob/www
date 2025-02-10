@@ -7,10 +7,18 @@ import { NowPlaying } from "./components/NowPlaying";
 import Project from "./components/Projects";
 import Title from "./components/Title";
 import WorkExp from "./components/WorkExp";
+import { Helmet } from "react-helmet-async";
 
 function App() {
   return (
     <>
+      <Helmet>
+        <title>Theppitak M. - React + Typescript Web Developer</title>
+        <meta
+          name="description"
+          content="Web developer and Creative copywriter in Bangkok, Thailand. Expertise in React, Typescript, and more. Contact me for web development or copywriting projects."
+        />
+      </Helmet>
       <div className="flex min-h-screen flex-col bg-slate-200 text-slate-800 dark:bg-slate-900 dark:text-slate-300">
         <header className="sticky top-0 w-full">
           <Header />
