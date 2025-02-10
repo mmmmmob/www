@@ -12,7 +12,8 @@ const requestHeader: SpotifyRequestHeader = {
 };
 
 export const NowPlaying = () => {
-  const { isPlaying, isNull, isLoading, result } = useNowPlaying(requestHeader);
+  const { isPlaying, isNull, isLoading, result } = useNowPlaying(requestHeader)
+
   return (
     <div className="flex h-8 w-screen justify-center bg-emerald-950/60 text-slate-300 shadow backdrop-blur-md">
       {isLoading && (
@@ -30,12 +31,17 @@ export const NowPlaying = () => {
       )}
       {!isLoading && isPlaying && (
         <div className="min-w-screen my-2 flex h-full items-center justify-center self-center truncate">
+          {isNull && <div className="flex self-center sm:hidden">
+            <p className="mr-1 flex-shrink-0 self-end font-fkDisplay text-xs">
+              Now Listening to a Podcast
+            </p>
+          </div>}
           <div className="flex self-center max-sm:hidden">
             <p className="mr-1 flex-shrink-0 self-end font-fkDisplay text-xs">
               Now Listening to
             </p>
           </div>
-            { isNull ? (<p className="font-fkDisplay text-xs">a Podcast</p>) : (<div className="flex self-center">
+            {  isNull ? (<p className="font-fkDisplay text-xs max-sm:hidden">a Podcast</p>) : (<div className="flex self-center">
               <BiSolidBarChartAlt2 size={18} className="mx-1"/>
               <img
                   src={result?.albumImageUrl}
