@@ -6,7 +6,7 @@ export default {
     extend: {
       fontFamily: {
         sans: [
-          "Univers",
+          "Public Sans",
           "IBM Plex Sans Thai Looped",
           "IBM Plex Sans JP",
           "IBM Plex Sans KR",
