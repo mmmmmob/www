@@ -2,7 +2,7 @@ import matter from "gray-matter";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-interface PostMeta {
+export interface PostMeta {
   title: string;
   date: string;
   slug: string;
@@ -11,27 +11,26 @@ interface PostMeta {
 export const Blogs = () => {
   const [posts, setPosts] = useState<PostMeta[]>([]);
 
+  const loadBlogPosts = async () => {
+    const files = import.meta.glob("../posts/*.md");
+    const loadedPosts: PostMeta[] = [];
+    for (const path in files) {
+      const file = (await files[path]()) as { default: string };
+      const text = await fetch(file.default).then((res) => res.text());
+      const { data } = matter(text) as unknown as { data: PostMeta }; // gray-matter return unknown type
+      loadedPosts.push({
+        title: data.title,
+        date: data.date,
+        slug: data.slug,
+      });
+    }
+    // Sort posts by date
+    loadedPosts.sort((a, b) => b.date.localeCompare(a.date));
+    setPosts(loadedPosts);
+  };
+
   useEffect(() => {
-    const loadPosts = async () => {
-      const files = import.meta.glob("../posts/*.md");
-      const loadedPosts: PostMeta[] = [];
-
-      for (const path in files) {
-        const file: any = await files[path]();
-        const text = await fetch(file.default).then((res) => res.text());
-        const { data } = matter(text);
-        loadedPosts.push({
-          title: data.title,
-          date: data.date,
-          slug: data.slug,
-        });
-      }
-
-      loadedPosts.sort((a, b) => b.date.localeCompare(a.date));
-      setPosts(loadedPosts);
-    };
-
-    loadPosts();
+    loadBlogPosts();
   }, []);
 
   return (
