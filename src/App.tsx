@@ -1,16 +1,19 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Helmet } from "react-helmet-async";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { NowPlaying } from "./components/NowPlaying";
+import { BlogPost } from "./pages/BlogPost";
 import { Blogs } from "./pages/Blogs";
 import { Home } from "./pages/Home";
 
 function App() {
   const location = useLocation();
   const pathName = location.pathname;
+  const { slug, title } = useParams();
+
   return (
     <>
       <Helmet>
@@ -26,7 +29,15 @@ function App() {
         </header>
         <main className="flex flex-1 flex-col items-center justify-center">
           <div className="my-6 flex w-full flex-col items-center justify-center sm:max-w-5xl">
-            {pathName === "/blogs" ? <Blogs /> : <Home />}
+            {pathName === "/blogs" ? (
+              title ? (
+                <BlogPost />
+              ) : (
+                <Blogs />
+              )
+            ) : (
+              <Home />
+            )}
           </div>
         </main>
         <footer className="sticky bottom-0 w-full">
