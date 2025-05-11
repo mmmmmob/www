@@ -6,6 +6,7 @@ export interface PostMetadata {
   title: string;
   date: string;
   slug: string;
+  excerpt: string;
 }
 
 export const Blogs = () => {
@@ -22,6 +23,7 @@ export const Blogs = () => {
         title: data.title,
         date: data.date,
         slug: data.slug,
+        excerpt: data.excerpt,
       });
     }
     // Sort posts by date
@@ -34,21 +36,29 @@ export const Blogs = () => {
   }, []);
 
   return (
-    <div className="prose mx-auto dark:prose-invert">
-      <h1>📝 Blog Posts</h1>
-      <ul>
+    <div className="prose dark:prose-invert">
+      <h1 className="mx-5 font-fkDisplay">
+        📌 <span className="underline underline-offset-4">Blogs</span>
+      </h1>
+      <div className="list-none">
         {posts.map((post) => (
-          <li key={post.slug}>
-            <Link
-              to={`/blogs/${post.slug}`}
-              className="no-underline hover:underline"
-            >
-              {post.title}
-            </Link>{" "}
-            <span className="text-sm text-gray-500">({post.date})</span>
-          </li>
+          <div key={post.slug} className="mb-5">
+            <div className="flex items-center justify-between px-5">
+              <Link
+                to={`/blogs/${post.slug}`}
+                className="no-underline hover:underline"
+              >
+                {post.title}
+              </Link>{" "}
+              <span className="text-sm font-light text-gray-500">
+                {post.date}
+              </span>
+            </div>
+
+            <p className="px-5 text-sm italic text-gray-500">{post.excerpt}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

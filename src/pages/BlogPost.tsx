@@ -18,6 +18,7 @@ export const BlogPost = () => {
       title: "",
       date: "",
       slug: "",
+      excerpt: "",
     },
   };
   const [post, setPost] = useState<PostEntry>(initialEntry);
@@ -48,10 +49,12 @@ export const BlogPost = () => {
     return <span className="loading loading-ring loading-lg"></span>;
 
   return (
-    <div className="prose mx-auto dark:prose-invert">
+    <div className="prose p-10 lg:prose-xl dark:prose-invert">
       <h1>{post.data.title}</h1>
       <p className="text-sm text-gray-500">{post.data.date}</p>
-      <ReactMarkdown>{post.content}</ReactMarkdown>
+      <article>
+        <ReactMarkdown>{post.content}</ReactMarkdown>
+      </article>
     </div>
   );
 };
