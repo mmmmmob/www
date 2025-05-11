@@ -21,7 +21,7 @@ export const BlogPost = () => {
   };
   const [post, setPost] = useState<PostEntry>(initialEntry);
 
-  const files = import.meta.glob("../posts/*.md");
+  const files = import.meta.glob("../blogs/*.md");
 
   const loadEntry = async () => {
     const match = Object.entries(files).find(([path]) =>
@@ -30,7 +30,7 @@ export const BlogPost = () => {
 
     if (!match) return;
 
-    const file: any = (await match[1]()) as { default: string };
+    const file = (await match[1]()) as { default: string };
     const text = await fetch(file.default).then((r) => r.text());
     const { content, data } = matter(text) as unknown as PostEntry;
     setPost({ content, data });
@@ -40,7 +40,8 @@ export const BlogPost = () => {
     loadEntry();
   }, [slug]);
 
-  if (!post.content) return <p>Loading...</p>;
+  if (!post.content)
+    return <span className="loading loading-ring loading-lg"></span>;
 
   return (
     <div className="prose mx-auto dark:prose-invert">

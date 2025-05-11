@@ -12,6 +12,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    // <Outlet/> will pick up these children for render
     children: [
       { index: true, element: <Home /> },
       { path: "blogs", element: <Blogs /> },

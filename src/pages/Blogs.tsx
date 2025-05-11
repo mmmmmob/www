@@ -12,7 +12,7 @@ export const Blogs = () => {
   const [posts, setPosts] = useState<PostMeta[]>([]);
 
   const loadBlogPosts = async () => {
-    const files = import.meta.glob("../posts/*.md");
+    const files = import.meta.glob("../blogs/*.md");
     const loadedPosts: PostMeta[] = [];
     for (const path in files) {
       const file = (await files[path]()) as { default: string };
