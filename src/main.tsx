@@ -7,6 +7,7 @@ import "./index.css";
 import { BlogPost } from "./pages/BlogPost";
 import { Blogs } from "./pages/Blogs";
 import { Home } from "./pages/Home";
+import { NotFound } from "./pages/NotFound.tsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,8 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "blogs", element: <Blogs /> },
       { path: "blogs/:slug", element: <BlogPost /> },
+      { path: "/404", element: <NotFound /> },
+      { path: "*", element: <NotFound /> },
     ],
   },
 ]);

@@ -1,16 +1,17 @@
 import matter from "gray-matter";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { useParams } from "react-router-dom";
-import { PostMeta } from "./Blogs";
+import { useNavigate, useParams } from "react-router-dom";
+import { PostMetadata } from "./Blogs";
 
 interface PostEntry {
   content: string;
-  data: PostMeta;
+  data: PostMetadata;
 }
 
 export const BlogPost = () => {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const initialEntry: PostEntry = {
     content: "",
     data: {
@@ -28,7 +29,10 @@ export const BlogPost = () => {
       path.includes(`${slug}.md`),
     );
 
-    if (!match) return;
+    if (!match) {
+      navigate("/404", { replace: true });
+      return;
+    }
 
     const file = (await match[1]()) as { default: string };
     const text = await fetch(file.default).then((r) => r.text());

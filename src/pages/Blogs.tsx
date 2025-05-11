@@ -2,22 +2,22 @@ import matter from "gray-matter";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export interface PostMeta {
+export interface PostMetadata {
   title: string;
   date: string;
   slug: string;
 }
 
 export const Blogs = () => {
-  const [posts, setPosts] = useState<PostMeta[]>([]);
+  const [posts, setPosts] = useState<PostMetadata[]>([]);
 
   const loadBlogPosts = async () => {
     const files = import.meta.glob("../blogs/*.md");
-    const loadedPosts: PostMeta[] = [];
+    const loadedPosts: PostMetadata[] = [];
     for (const path in files) {
       const file = (await files[path]()) as { default: string };
       const text = await fetch(file.default).then((res) => res.text());
-      const { data } = matter(text) as unknown as { data: PostMeta }; // gray-matter return unknown type
+      const { data } = matter(text) as unknown as { data: PostMetadata }; // gray-matter return unknown type
       loadedPosts.push({
         title: data.title,
         date: data.date,
