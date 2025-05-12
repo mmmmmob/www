@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { Layout } from "./Layout";
 
 function App() {
+  console.log("Hello, World! 👾");
   return (
     <>
       <Layout>
