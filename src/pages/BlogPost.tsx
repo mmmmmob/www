@@ -50,6 +50,12 @@ export const BlogPost = () => {
 
   return (
     <div className="prose p-10 lg:prose-xl dark:prose-invert">
+      <button
+        className="mb-5 text-base hover:underline"
+        onClick={() => navigate(-1)}
+      >
+        🡐 Back
+      </button>
       <h1>{post.data.title}</h1>
       <p className="text-sm text-gray-500">{post.data.date}</p>
       <article>

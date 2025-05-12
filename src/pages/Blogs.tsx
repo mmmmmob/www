@@ -1,6 +1,6 @@
 import matter from "gray-matter";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export interface PostMetadata {
   title: string;
@@ -10,6 +10,7 @@ export interface PostMetadata {
 }
 
 export const Blogs = () => {
+  const navigate = useNavigate();
   const [posts, setPosts] = useState<PostMetadata[]>([]);
 
   const loadBlogPosts = async () => {
@@ -37,6 +38,12 @@ export const Blogs = () => {
 
   return (
     <div className="prose dark:prose-invert">
+      <button
+        className="mb-5 ml-4 text-base hover:underline"
+        onClick={() => navigate(-1)}
+      >
+        🡐 Back
+      </button>
       <h1 className="mx-5 font-fkDisplay">
         📌 <span className="underline underline-offset-4">Blogs</span>
       </h1>
