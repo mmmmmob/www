@@ -42,7 +42,7 @@ export const Blogs = () => {
         className="mb-10 ml-4 text-base hover:underline"
         onClick={() => navigate(-1)}
       >
-        🡐 Back
+        ← Back
       </button>
       <h1 className="mx-5 mb-5 font-fkDisplay text-5xl font-bold max-md:text-4xl">
         📌 <span className="underline underline-offset-4">Blogs</span>

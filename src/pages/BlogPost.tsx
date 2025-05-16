@@ -51,7 +51,7 @@ export const BlogPost = () => {
         className="mb-5 ml-4 text-base hover:underline"
         onClick={() => navigate(-1)}
       >
-        🡐 Back
+        ← Back
       </button>
       <div className="prose p-5 dark:prose-invert">
         {!post.content && (
