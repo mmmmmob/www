@@ -49,7 +49,7 @@ export const BlogPost = () => {
     return <span className="loading loading-ring loading-lg"></span>;
 
   return (
-    <div className="prose p-10 lg:prose-xl dark:prose-invert">
+    <div className="prose p-5 dark:prose-invert">
       <button
         className="mb-5 text-base hover:underline"
         onClick={() => navigate(-1)}

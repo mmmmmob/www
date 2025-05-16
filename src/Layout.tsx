@@ -17,8 +17,8 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         <header className="sticky top-0 w-full">
           <Header />
         </header>
-        <main className="flex flex-1 flex-col items-center justify-center">
-          <div className="my-6 flex w-full flex-col items-center justify-center sm:max-w-5xl">
+        <main className="flex flex-1 flex-col items-center">
+          <div className="my-6 flex w-full flex-col items-center sm:max-w-5xl">
             {children}
           </div>
         </main>
