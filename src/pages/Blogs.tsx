@@ -37,31 +37,30 @@ export const Blogs = () => {
   }, []);
 
   return (
-    <div className="prose dark:prose-invert">
+    <div className="p-5">
       <button
-        className="mb-5 ml-4 text-base hover:underline"
+        className="mb-10 ml-4 text-base hover:underline"
         onClick={() => navigate(-1)}
       >
         🡐 Back
       </button>
-      <h1 className="mx-5 font-fkDisplay">
+      <h1 className="mx-5 mb-5 font-fkDisplay text-5xl font-bold max-md:text-4xl">
         📌 <span className="underline underline-offset-4">Blogs</span>
       </h1>
       <div className="list-none">
         {posts.map((post) => (
-          <div key={post.slug} className="mb-5">
-            <div className="flex items-center justify-between px-5">
+          <div key={post.slug} className="py-5">
+            <div className="mb-3 flex items-center justify-between px-5">
               <Link
                 to={`/blogs/${post.slug}`}
-                className="no-underline hover:underline"
+                className="max-w-[800px] truncate text-lg font-medium no-underline hover:underline max-lg:max-w-[600px] max-md:max-w-[400px] max-sm:max-w-52"
               >
                 {post.title}
-              </Link>{" "}
+              </Link>
               <span className="text-sm font-light text-gray-500">
                 {post.date}
               </span>
             </div>
-
             <p className="px-5 text-sm italic text-gray-500">{post.excerpt}</p>
           </div>
         ))}

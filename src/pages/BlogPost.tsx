@@ -45,22 +45,28 @@ export const BlogPost = () => {
     loadEntry();
   }, [slug]);
 
-  if (!post.content)
-    return <span className="loading loading-ring loading-lg"></span>;
-
   return (
-    <div className="prose p-5 dark:prose-invert">
+    <div className="p-5">
       <button
-        className="mb-5 text-base hover:underline"
+        className="mb-5 ml-4 text-base hover:underline"
         onClick={() => navigate(-1)}
       >
         🡐 Back
       </button>
-      <h1>{post.data.title}</h1>
-      <p className="text-sm text-gray-500">{post.data.date}</p>
-      <article>
-        <ReactMarkdown>{post.content}</ReactMarkdown>
-      </article>
+      <div className="prose p-5 dark:prose-invert">
+        {!post.content && (
+          <div className="flex items-center justify-center">
+            <div className="loading loading-ring loading-xl"></div>
+          </div>
+        )}
+        <h1 className="break-words max-md:max-w-[1000px] max-sm:max-w-96 max-sm:text-2xl">
+          {post.data.title}
+        </h1>
+        <p className="text-sm text-gray-500">{post.data.date}</p>
+        <article>
+          <ReactMarkdown>{post.content}</ReactMarkdown>
+        </article>
+      </div>
     </div>
   );
 };
