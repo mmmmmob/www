@@ -1,6 +1,7 @@
-import StacksTag from "./StackTag.tsx";
-import { ProjectElement } from "../../types/Projects.ts";
-import { Stack } from "../../types/Stack.ts";
+import { ProjectElement } from "@/types/Projects";
+import { Stack } from "@/types/Stack";
+import Link from "next/link";
+import StacksTag from "./StackTag";
 
 function ProjectCard(project: ProjectElement) {
   return (
@@ -12,13 +13,13 @@ function ProjectCard(project: ProjectElement) {
             alt="icon"
             className="mr-3 size-12 self-center rounded-md"
           />
-          <a
+          <Link
             className="self-center font-mono text-xl font-semibold after:content-['_↗'] hover:text-slate-500 dark:hover:text-slate-100"
             href={project.url}
             target="_blank"
           >
             {project.title}
-          </a>
+          </Link>
         </div>
         <div className="mt-4 flex flex-wrap gap-x-1">
           {project.stacks.map((stack: Stack) => (

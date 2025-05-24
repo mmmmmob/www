@@ -1,3 +1,4 @@
+import { Projects } from "@/types/Projects";
 import {
   SiAxios,
   SiDaisyui,
@@ -9,7 +10,6 @@ import {
 } from "react-icons/si";
 import { VscJson } from "react-icons/vsc";
 import ProjectCard from "./sub-components/ProjectCard";
-import { Projects } from "../types/Projects.ts";
 
 const projects: Projects[] = [
   {

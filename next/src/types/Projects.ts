@@ -1,4 +1,4 @@
-import { Stack } from "./Stack.ts";
+import { Stack } from "./Stack";
 
 export type Projects = {
   id: number;

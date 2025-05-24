@@ -1,5 +1,5 @@
-import WorkExpCard from "./sub-components/WorkExpCard.tsx";
-import { WorkExperience } from "../types/WorkExperience.ts";
+import { WorkExperience } from "@/types/WorkExperience";
+import WorkExpCard from "./sub-components/WorkExpCard";
 
 const experiences: WorkExperience[] = [
   {
