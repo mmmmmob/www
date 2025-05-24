@@ -1,8 +1,7 @@
 "use client";
 
-import { NowPlayingResponse, SpotifyRequestHeader } from "@/types/Spotify";
+import { NowPlayingResponse } from "@/types/Spotify";
 import { useEffect, useState } from "react";
-import getNowPlayingItem from "../lib/spotify";
 
 interface UseNowPlayingReturn {
   result: NowPlayingResponse | null;
@@ -11,9 +10,7 @@ interface UseNowPlayingReturn {
   isPlaying: boolean;
 }
 
-export const useNowPlaying = (
-  requestHeader: SpotifyRequestHeader,
-): UseNowPlayingReturn => {
+export const useNowPlaying = (): UseNowPlayingReturn => {
   const [isLoading, setIsLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isNull, setIsNull] = useState(false);

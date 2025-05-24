@@ -1,22 +1,10 @@
 "use client";
 
 import { useNowPlaying } from "@/hooks/useNowPlaying";
-import { SpotifyRequestHeader } from "@/types/Spotify";
-import { SPOTIFY_CONFIG } from "@/utils/config";
 import { BiSolidBarChartAlt2 } from "react-icons/bi";
 
-const client_id = SPOTIFY_CONFIG.client_id;
-const client_secret = SPOTIFY_CONFIG.client_secret;
-const refresh_token = SPOTIFY_CONFIG.refresh_token;
-
-const requestHeader: SpotifyRequestHeader = {
-  client_id,
-  client_secret,
-  refresh_token,
-};
-
 export const NowPlaying = () => {
-  const { isPlaying, isNull, isLoading, result } = useNowPlaying(requestHeader);
+  const { isPlaying, isNull, isLoading, result } = useNowPlaying();
 
   return (
     <div className="flex h-8 w-screen justify-center bg-emerald-950/60 text-slate-300 shadow backdrop-blur-md">
