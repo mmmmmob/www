@@ -1,3 +1,6 @@
+"use client";
+
+import { log } from "console";
 import { useEffect, useState } from "react";
 import { IoMoon, IoSunny } from "react-icons/io5";
 
@@ -7,13 +10,7 @@ enum Mode {
 }
 
 function ModeToggle() {
-  const [theme, setTheme] = useState((): Mode => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return Mode.Dark;
-    } else {
-      return Mode.Light;
-    }
-  });
+  const [theme, setTheme] = useState<Mode | null>(null);
 
   const changeTheme = () => {
     const newTheme = theme === Mode.Light ? Mode.Dark : Mode.Light;
@@ -21,12 +18,21 @@ function ModeToggle() {
   };
 
   useEffect(() => {
-    if (theme === Mode.Dark) {
-      document.documentElement.classList.add(Mode.Dark);
-    } else {
-      document.documentElement.classList.remove(Mode.Dark);
-    }
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+    setTheme(prefersDark ? Mode.Dark : Mode.Light);
+  }, []);
+
+  useEffect(() => {
+    if (!theme) return;
+    const chooseDark = theme === Mode.Dark;
+    document.documentElement.classList.toggle(
+      "dark",
+      chooseDark ? true : false,
+    );
   }, [theme]);
+  if (!theme) return null;
 
   return (
     <button

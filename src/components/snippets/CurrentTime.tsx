@@ -1,7 +1,9 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 const CurrentTime = () => {
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState<Date | null>(null); // server generate time as null before client rehydrate
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -9,14 +11,16 @@ const CurrentTime = () => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, []); // after rehydration done, useEffect gets called and setTime with new Date()
+
+  if (!time) return null;
 
   return (
     <div className="flex justify-center">
       <p className="font-fkDisplay text-sm">
         {time.toLocaleTimeString("en-GB", { timeZone: "Asia/Bangkok" })}
       </p>
-      <p className="mx-1 font-fkDisplay text-sm font-bold">
+      <p className="font-fkDisplay mx-1 text-sm font-bold">
         •{" "}
         <a
           href={
