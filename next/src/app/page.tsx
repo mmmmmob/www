@@ -12,12 +12,13 @@ export default function Home() {
           height={38}
           priority
         />
-        <div className="divider-accent">OR</div>
         <ol>
-          <li>
+          <li className="font-fkDisplay text-3xl">
             Get started by editing <code>src/app/page.tsx</code>.
           </li>
-          <li>Save and see your changes instantly.</li>
+          <li className="font-serif text-2xl">
+            Save and see your changes instantly.
+          </li>
         </ol>
 
         <div>
