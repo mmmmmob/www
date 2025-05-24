@@ -11,18 +11,23 @@ const SPOTIFY_CONFIG: SpotifyRequestHeader = {
 // handler api call update from serer-side api code
 export async function GET() {
   const { client_id, client_secret, refresh_token } = SPOTIFY_CONFIG;
-  const result = await getNowPlayingItem({
-    client_id,
-    client_secret,
-    refresh_token,
-  });
 
-  if (result) {
-    return NextResponse.json(result, { status: 200 });
+  try {
+    const result = await getNowPlayingItem({
+      client_id,
+      client_secret,
+      refresh_token,
+    });
+    // if there's something playing ->
+    if (result && typeof result !== "boolean" && result.isPlaying) {
+      return NextResponse.json(result, { status: 200 });
+    }
+    // if nothing is playing -> send 200 but idle
+    return NextResponse.json({ ...result, isPlaying: false }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Failed to get now playing", details: error },
+      { status: 401 },
+    );
   }
-
-  return NextResponse.json(
-    { error: "Failed to get now playing" },
-    { status: 401 },
-  );
 }

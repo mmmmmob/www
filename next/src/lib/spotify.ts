@@ -45,6 +45,10 @@ export const getNowPlaying = async (
   });
   if (!response.ok) {
     throw new Error(`Failed to fetch now playing: ${response.statusText}`);
+  } else if (response.status === 204) {
+    return {
+      is_playing: false,
+    };
   }
   return response.json();
 };
@@ -69,7 +73,18 @@ export default async function getNowPlayingItem(
   try {
     const response = await getNowPlaying(requestHeader);
     // Retrieve raw data as its type then clean data as return type
-    return transformSpotifyResponse(response);
+    if (response) {
+      return transformSpotifyResponse(response);
+    }
+    return transformSpotifyResponse({
+      is_playing: false,
+      item: {
+        album: { images: [{ url: "" }] },
+        artists: [{ name: "" }],
+        external_urls: { spotify: "" },
+        name: "",
+      },
+    } as SpotifyNowPlayingResponse);
   } catch (error) {
     console.error("Error fetching now playing item:", error);
     return false;

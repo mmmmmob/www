@@ -20,8 +20,8 @@ export const useNowPlaying = (): UseNowPlayingReturn => {
     setIsLoading(true);
     try {
       const response = await fetch("/api/now-playing"); // fetch from internal handler api
-      const value = await response.json();
-      if (!value) {
+      const value: NowPlayingResponse = await response.json();
+      if (!value.isPlaying) {
         setIsPlaying(false);
       } else if (value.songUrl === undefined && value.isPlaying) {
         // playing podcast episode won't return item but isPlaying will be true
