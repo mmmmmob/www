@@ -8,7 +8,8 @@ const SPOTIFY_CONFIG: SpotifyRequestHeader = {
   refresh_token: process.env.SPOTIFY_REFRESH_TOKEN,
 };
 
-// handler api call update from serer-side api code
+// Calls getNowPlayingItem from lib/spotify.ts to fetch current track using Spotify API tokens
+// Returns currently playing Spotify track using internal API
 export async function GET() {
   const { client_id, client_secret, refresh_token } = SPOTIFY_CONFIG;
 
