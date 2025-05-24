@@ -6,6 +6,7 @@ import CurrentTime from "./snippets/CurrentTime";
 import ModeToggle from "./snippets/ModeToggle";
 
 const Header = () => {
+  console.log("Hello, World! 👾");
   return (
     <div className="relative flex h-12 w-screen items-center bg-white/20 shadow backdrop-blur-lg md:h-14 dark:bg-gray-700/50">
       <div className="flex w-full justify-between px-5">

@@ -17,7 +17,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log("Hello, World! 👾");
+  console.log("Hello, Console! 🧒🏻");
   return (
     <html lang="en">
       <body>
