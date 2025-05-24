@@ -1,13 +1,14 @@
-import BackButton from "@/components/snippets/BackButton";
+import { BackButton } from "@/components/snippets/BackButton";
 import { getAllPostsList } from "@/lib/posts";
 import Link from "next/link";
 
+// this page will be rendering as a static page on server
 export default function Blogs() {
   const posts = getAllPostsList();
 
   return (
     <div className="p-5">
-      <BackButton to="/" />
+      <BackButton to="/" label="Home" />
       <h1 className="font-fkDisplay mx-5 mb-5 text-5xl font-bold max-md:text-4xl">
         📌 <span className="underline underline-offset-4">Blogs</span>
       </h1>

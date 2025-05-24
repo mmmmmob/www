@@ -1,14 +1,17 @@
-import BackButton from "@/components/snippets/BackButton";
+import { BackButton } from "@/components/snippets/BackButton";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/posts";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 
+// this page will be rendering as a static page on server
+// generate all possible static params after called read filename function in lib
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
+// generate SEO metadata for each slug (from url path) and inject into static page
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
@@ -50,7 +53,6 @@ export default async function BlogPost(props: {
     <>
       <div className="p-5">
         <BackButton />
-
         <div className="prose dark:prose-invert p-5">
           {!post && (
             <div className="flex items-center justify-center">
