@@ -1,3 +1,4 @@
+import BackButton from "@/components/snippets/BackButton";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/posts";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -48,12 +49,7 @@ export default async function BlogPost(props: {
   return (
     <>
       <div className="p-5">
-        <button
-          className="mb-5 ml-4 text-base hover:underline"
-          //onClick={() => window.history.back()}
-        >
-          ← Back
-        </button>
+        <BackButton />
 
         <div className="prose dark:prose-invert p-5">
           {!post && (

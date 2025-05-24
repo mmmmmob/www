@@ -1,3 +1,4 @@
+import BackButton from "@/components/snippets/BackButton";
 import { getAllPostsList } from "@/lib/posts";
 import Link from "next/link";
 
@@ -6,12 +7,7 @@ export default function Blogs() {
 
   return (
     <div className="p-5">
-      <button
-        className="mb-10 ml-4 text-base hover:underline"
-        //onClick={() => }
-      >
-        ← Back
-      </button>
+      <BackButton to="/" />
       <h1 className="font-fkDisplay mx-5 mb-5 text-5xl font-bold max-md:text-4xl">
         📌 <span className="underline underline-offset-4">Blogs</span>
       </h1>
