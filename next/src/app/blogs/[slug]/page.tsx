@@ -27,7 +27,7 @@ export async function generateMetadata(props: {
       description: post.meta.excerpt,
       images: [
         {
-          url: `https://theppitak.me/${post.meta.image}`,
+          url: `https://theppitak.me/api/og?title=${post.meta.title}`,
           alt: post.meta.title,
         },
       ],
@@ -38,7 +38,7 @@ export async function generateMetadata(props: {
       card: "summary_large_image",
       title: post.meta.title,
       description: post.meta.excerpt,
-      images: [`https://theppitak.me/${post.meta.image}`],
+      images: [`https://theppitak.me/api/og?title=${post.meta.title}`],
     },
   };
 }
