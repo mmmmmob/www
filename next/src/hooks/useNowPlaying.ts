@@ -1,8 +1,8 @@
 "use client";
 
-import getNowPlayingItem from "@/api/spotify";
 import { NowPlayingResponse, SpotifyRequestHeader } from "@/types/Spotify";
 import { useEffect, useState } from "react";
+import getNowPlayingItem from "../lib/spotify";
 
 interface UseNowPlayingReturn {
   result: NowPlayingResponse | null;
@@ -22,7 +22,8 @@ export const useNowPlaying = (
   const fetchNowPlaying = async () => {
     setIsLoading(true);
     try {
-      const value = await getNowPlayingItem(requestHeader);
+      const response = await fetch("/api/now-playing"); // fetch from internal handler api
+      const value = await response.json();
       if (!value) {
         setIsPlaying(false);
       } else if (value.songUrl === undefined && value.isPlaying) {
