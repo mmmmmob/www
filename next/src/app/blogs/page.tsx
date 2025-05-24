@@ -14,20 +14,23 @@ export default function Blogs() {
       </h1>
       <div className="list-none">
         {posts.map((post) => (
-          <div key={post.slug} className="py-5">
-            <div className="mb-3 flex items-center justify-between px-5">
-              <Link
-                href={`/blogs/${post.slug}`}
-                className="max-w-[800px] truncate text-lg font-medium no-underline hover:underline max-lg:max-w-[600px] max-md:max-w-[400px] max-sm:max-w-52"
-              >
+          <Link
+            href={`/blogs/${post.slug}`}
+            key={post.slug}
+            className="mx-10 py-5"
+          >
+            <div className="mb-2 flex items-center justify-between px-5">
+              <p className="max-w-[800px] truncate text-lg font-medium no-underline hover:underline max-lg:max-w-[600px] max-md:max-w-[400px] max-sm:max-w-52">
                 {post.title}
-              </Link>
+              </p>
               <span className="text-sm font-light text-gray-500">
                 {post.date}
               </span>
             </div>
-            <p className="px-5 text-sm text-gray-500 italic">{post.excerpt}</p>
-          </div>
+            <p className="mb-4 px-5 text-sm text-gray-500 italic">
+              {post.excerpt}
+            </p>
+          </Link>
         ))}
       </div>
     </div>

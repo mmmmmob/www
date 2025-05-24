@@ -56,24 +56,22 @@ export default async function BlogPost(props: {
   const post = await getPostBySlug(params.slug);
   if (!post) notFound();
   return (
-    <>
-      <div className="p-5">
-        <BackButton />
-        <div className="prose dark:prose-invert p-5">
-          {!post && (
-            <div className="flex items-center justify-center">
-              <div className="loading loading-ring loading-xl"></div>
-            </div>
-          )}
-          <h1 className="break-words max-md:max-w-[1000px] max-sm:max-w-96 max-sm:text-2xl">
-            {post.meta.title}
-          </h1>
-          <p className="text-sm text-gray-500">{post.meta.date}</p>
-          <article>
-            <ReactMarkdown>{post.content}</ReactMarkdown>
-          </article>
-        </div>
+    <div className="p-5">
+      <BackButton />
+      <div className="prose dark:prose-invert p-5">
+        {!post && (
+          <div className="flex items-center justify-center">
+            <div className="loading loading-ring loading-xl"></div>
+          </div>
+        )}
+        <h1 className="break-words max-md:max-w-[1000px] max-sm:max-w-96 max-sm:text-2xl">
+          {post.meta.title}
+        </h1>
+        <p className="text-sm text-gray-500">{post.meta.date}</p>
+        <article>
+          <ReactMarkdown>{post.content}</ReactMarkdown>
+        </article>
       </div>
-    </>
+    </div>
   );
 }
