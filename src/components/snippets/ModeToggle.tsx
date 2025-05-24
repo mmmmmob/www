@@ -1,6 +1,5 @@
 "use client";
 
-import { log } from "console";
 import { useEffect, useState } from "react";
 import { IoMoon, IoSunny } from "react-icons/io5";
 
