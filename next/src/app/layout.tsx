@@ -1,6 +1,8 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { NowPlaying } from "@/components/NowPlaying";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -15,6 +17,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log("Hello, World! 👾");
   return (
     <html lang="en">
       <body>
@@ -25,6 +28,8 @@ export default function RootLayout({
           <main className="flex flex-1 flex-col items-center">
             <div className="my-6 flex w-full flex-col items-center sm:max-w-5xl">
               {children}
+              <Analytics />
+              <SpeedInsights />
             </div>
           </main>
           <footer className="sticky bottom-0 w-full">
