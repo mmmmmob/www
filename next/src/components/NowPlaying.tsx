@@ -43,16 +43,16 @@ export const NowPlaying = () => {
                 alt={`${result?.title} album art`}
                 className="mx-1 size-5 self-end rounded-md"
               />
-              <div className="flex self-center text-xs font-bold min-md:w-40">
+              <div className="flex self-center text-xs font-bold max-lg:max-w-96 max-md:max-w-56">
                 <a
                   href={result?.songUrl}
                   target="_blank"
-                  className="mx-1 overflow-x-scroll text-center max-md:max-w-44"
+                  className="mx-1 overflow-x-scroll text-center"
                 >
                   {result?.title}
                 </a>
                 <p className="mx-1">•</p>
-                <p className="ml-1 truncate text-center font-medium max-md:max-w-36">
+                <p className="ml-1 text-center font-medium max-sm:truncate">
                   {result?.artist}
                 </p>
               </div>
