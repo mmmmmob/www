@@ -1,5 +1,5 @@
+import { StackElement } from "@/types/Stack";
 import React from "react";
-import { StackElement } from "../../types/Stack.ts";
 
 const StacksTag = (stack: StackElement) => {
   return (
@@ -12,6 +12,6 @@ const StacksTag = (stack: StackElement) => {
       <p className="text-xs">{stack.name}</p>
     </div>
   );
-}
+};
 
 export default StacksTag;

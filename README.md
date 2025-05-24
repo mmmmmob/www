@@ -2,28 +2,29 @@
 
 ![Theppitak M_](https://github.com/mmmmmob/me.theppitak/assets/141404845/29d12b14-2540-4953-9c58-075005d9442d)
 
-theppitak.me , my portfolio site built with React, NPM, and Vite. Design with cleanliness and simplicity in mind.
+theppitak.me , my portfolio site built with React, NPM, and Next.js. Design with cleanliness and simplicity in mind.
 
 ## Table of Contents
 
 - [theppitak.me](#theppitakme)
-    - [Table of Contents](#table-of-contents)
-    - [Features](#features)
-    - [Demo](#demo)
-    - [Getting Started](#getting-started)
-        - [Prerequisites](#prerequisites)
-        - [Installation](#installation)
-        - [Running the Project](#running-the-project)
-        - [Now Playing Bar](#now-playing-bar)
-    - [Technologies Used](#technologies-used)
-    - [Contributing](#contributing)
-    - [License](#license)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Demo](#demo)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Running the Project](#running-the-project)
+    - [Now Playing Bar](#now-playing-bar)
+  - [Technologies Used](#technologies-used)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Features
 
 - Responsive design
 - Dark mode support
 - Projects showcase
+- Blog Post with SSR for better SEO / OpenGraph sharing with preview
 
 ## Demo
 
@@ -48,7 +49,7 @@ Ensure you have the following tools installed:
    cd www
    ```
 
-2. Install dependencies using Bun:
+2. Install dependencies using NPM:
 
    ```sh
    npm install
@@ -62,7 +63,7 @@ Start the development server:
 npm run dev
 ```
 
-Open your browser and visit `http://localhost:5173` or the address as shown in your terminal to see your portfolio.
+Open your browser and visit `http://localhost:3000` or the address as shown in your terminal to see your portfolio.
 
 ### Now Playing Bar
 
@@ -70,14 +71,14 @@ The Now Playing Bar at the bottom pf the page uses Spotify's Now Playing API to 
 
 Refer to the `.env.example` file to learn how to obtain your credential tokens from the Spotify Developer website. Use these tokens in production by creating a `.env.local` file in your folder. Remember to set the actual environment variables on your deployment platform.
 
-You can opt-out of this feature by removing the `<NowPlaying/>` component from `App.jsx`.
+You can opt-out of this feature by removing the `<NowPlaying/>` component from `page.tsx` in `/src/app`.
 
 (special thanks for initial code reference before adjustments from [@theodorusclarence](https://github.com/theodorusclarence) blog [post](https://theodorusclarence.com/blog/spotify-now-playing))
 
 ## Technologies Used
 
 - **Frontend**: [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/), [daisyUI](https://daisyui.com/) and [react-icons](https://react-icons.github.io/react-icons/)
-- **Bundler**: [Vite](https://vitejs.dev/)
+- **Framework / Bundler**: [Next.js](https://nextjs.org/)
 - **JavaScript Runtime and Package Manager**: [Node.js](https://nodejs.org/)
 
 ## Contributing

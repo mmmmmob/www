@@ -6,9 +6,9 @@ export type SpotifyTokenReturn = {
 };
 
 export type SpotifyRequestHeader = {
-  client_id: string;
-  client_secret: string;
-  refresh_token: string;
+  client_id: string | undefined;
+  client_secret: string | undefined;
+  refresh_token: string | undefined;
 };
 
 export type SpotifyNowPlayingResponse = {

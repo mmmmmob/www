@@ -1,9 +1,9 @@
-import Info from "../components/Info";
-import Project from "../components/Projects";
-import Title from "../components/Title";
-import WorkExp from "../components/WorkExp";
+import Info from "@/components/Info";
+import Project from "@/components/Projects";
+import Title from "@/components/Title";
+import WorkExp from "@/components/WorkExp";
 
-export const Home = () => {
+export default function Home() {
   return (
     <>
       <Title />
@@ -13,4 +13,4 @@ export const Home = () => {
       <Project />
     </>
   );
-};
+}
