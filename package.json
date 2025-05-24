@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-	"dev:next": "cd next && npm run dev",
+    "dev:next": "cd next && npm run dev",
     "build": "tsc -b && vite build",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
