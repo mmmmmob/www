@@ -19,6 +19,12 @@ export async function generateMetadata(props: {
   const post = await getPostBySlug(params.slug);
   if (!post) return {};
 
+  // OG image can be retrieve from :
+  // 1) direct image link, 2) file in /public/og, 3) auto-generate from title if nothing is provided
+  const imageUrl = post.meta.image?.startsWith("http")
+    ? post.meta.image
+    : `https://theppitak.me/${post.meta.image ? `og/${post.meta.image}` : `api/og?title=${post.meta.title}&desc=${post.meta.excerpt}`}`;
+
   return {
     title: post.meta.title,
     description: post.meta.excerpt,
@@ -27,7 +33,7 @@ export async function generateMetadata(props: {
       description: post.meta.excerpt,
       images: [
         {
-          url: `https://theppitak.me/api/og?title=${post.meta.title}`,
+          url: imageUrl,
           alt: post.meta.title,
         },
       ],
@@ -38,7 +44,7 @@ export async function generateMetadata(props: {
       card: "summary_large_image",
       title: post.meta.title,
       description: post.meta.excerpt,
-      images: [`https://theppitak.me/api/og?title=${post.meta.title}`],
+      images: [imageUrl],
     },
   };
 }

@@ -3,6 +3,7 @@ title: "Enim velit pariatur est veniam non eiusmod id do cillum mollit esse ut a
 date: "2025-05-12"
 slug: "second-post"
 excerpt: "ภูมิทัศน์สตาร์ทแอปเปิลเมี่ยงคำหลวงปู่ มาร์กไพลินไบเบิลซัพพลายเออร์เก๊ะ ดีไซน์เนอร์คอมเพล็กซ์ ทีวีเซ็นเตอร์ว่ะ แพทเทิร์นกับดักสติกเกอร์ดีพาร์ตเมนท์ กับดักก๊วน แคร็กเกอร์"
+image: "test.png"
 ---
 
 Hello! This is my **second** post written in Markdown.

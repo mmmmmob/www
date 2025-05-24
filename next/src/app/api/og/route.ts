@@ -7,9 +7,15 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
 
     const hasTitle = searchParams.has("title");
+    const hasDescription = searchParams.has("desc");
+
     const title = hasTitle
       ? searchParams.get("title")?.slice(0, 100)
       : "Latest Blog";
+
+    const description = hasDescription
+      ? searchParams.get("desc")?.slice(0, 160)
+      : "";
 
     return new ImageResponse(
       React.createElement(
@@ -63,6 +69,23 @@ export async function GET(req: Request) {
             },
           },
           title,
+        ),
+        // Description text
+        React.createElement(
+          "div",
+          {
+            style: {
+              fontSize: 40,
+              fontStyle: "normal",
+              letterSpacing: "-0.025em",
+              color: "white",
+              marginTop: 30,
+              padding: "0 120px",
+              lineHeight: 1.4,
+              whiteSpace: "pre-wrap",
+            },
+          },
+          description,
         ),
       ),
       {
