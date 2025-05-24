@@ -1,71 +1,77 @@
-import matter from "gray-matter";
-//import { useEffect, useState } from "react";
+import { getAllPostSlugs, getPostBySlug } from "@/lib/posts";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
-//import { useNavigate, useParams } from "react-router-dom";
-import { PostMetadata } from "../page";
 
-interface PostEntry {
-  content: string;
-  data: PostMetadata;
+export async function generateStaticParams() {
+  const slugs = getAllPostSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
-export default function BlogPost() {
-  //   const { slug } = useParams();
-  //   const navigate = useNavigate();
-  const initialEntry: PostEntry = {
-    content: "",
-    data: {
-      title: "",
-      date: "",
-      slug: "",
-      excerpt: "",
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug);
+  if (!post) return {};
+
+  return {
+    title: post.meta.title,
+    description: post.meta.excerpt,
+    openGraph: {
+      title: post.meta.title,
+      description: post.meta.excerpt,
+      images: [
+        {
+          url: `https://theppitak.me/${post.meta.image}`,
+          alt: post.meta.title,
+        },
+      ],
+      type: "article",
+      url: `https://theppitak.me/blogs/${post.meta.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.meta.title,
+      description: post.meta.excerpt,
+      images: [`https://theppitak.me/${post.meta.image}`],
     },
   };
+}
 
-  //const [post, setPost] = useState<PostEntry>(initialEntry);
-
-  //   const files = import.meta.glob("../blogs/*.md");
-
-  //   const loadEntry = async () => {
-  //     const match = Object.entries(files).find(([path]) =>
-  //       path.includes(`${slug}.md`),
-  //     );
-
-  //     if (!match) {
-  //       navigate("/404", { replace: true });
-  //       return;
-  //     }
-
-  //     const file = (await match[1]()) as { default: string };
-  //     const text = await fetch(file.default).then((r) => r.text());
-  //     const { content, data } = matter(text) as unknown as PostEntry;
-  //     setPost({ content, data });
-  //   };
-
-  //   useEffect(() => {
-  //     loadEntry();
-  //   }, [slug]);
-
+export default async function BlogPost({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const post = await getPostBySlug(params.slug);
+  if (!post) notFound();
   return (
-    <div className="p-5">
-      <button
-        className="mb-5 ml-4 text-base hover:underline"
-        //onClick={() => navigate(-1)}
-      >
-        ← Back
-      </button>
-      <div className="prose dark:prose-invert p-5">
-        {/* {!post.content && (
-          <div className="flex items-center justify-center">
-            <div className="loading loading-ring loading-xl"></div>
-          </div>
-        )} */}
-        <h1 className="break-words max-md:max-w-[1000px] max-sm:max-w-96 max-sm:text-2xl">
-          {/* {post.data.title} */}
-        </h1>
-        {/* <p className="text-sm text-gray-500">{post.data.date}</p> */}
-        <article>{/* <ReactMarkdown>{post.content}</ReactMarkdown> */}</article>
+    <>
+      <div className="p-5">
+        <button
+          className="mb-5 ml-4 text-base hover:underline"
+          //onClick={() => window.history.back()}
+        >
+          ← Back
+        </button>
+
+        <div className="prose dark:prose-invert p-5">
+          {!post && (
+            <div className="flex items-center justify-center">
+              <div className="loading loading-ring loading-xl"></div>
+            </div>
+          )}
+          <h1 className="break-words max-md:max-w-[1000px] max-sm:max-w-96 max-sm:text-2xl">
+            {post.meta.title}
+          </h1>
+          <p className="text-sm text-gray-500">{post.meta.date}</p>
+          <article>
+            <ReactMarkdown>{post.content}</ReactMarkdown>
+          </article>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
