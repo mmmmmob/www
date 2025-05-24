@@ -2,6 +2,8 @@
 @plugin "daisyui";
 @plugin "@tailwindcss/typography";
 
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans:
     "Public Sans", "IBM Plex Sans Thai Looped", "IBM Plex Sans JP",

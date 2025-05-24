@@ -1,5 +1,6 @@
 "use client";
 
+import { log } from "console";
 import { useEffect, useState } from "react";
 import { IoMoon, IoSunny } from "react-icons/io5";
 
@@ -25,13 +26,12 @@ function ModeToggle() {
 
   useEffect(() => {
     if (!theme) return;
-    if (theme === Mode.Dark) {
-      document.documentElement.classList.add(Mode.Dark);
-    } else {
-      document.documentElement.classList.remove(Mode.Dark);
-    }
+    const chooseDark = theme === Mode.Dark;
+    document.documentElement.classList.toggle(
+      "dark",
+      chooseDark ? true : false,
+    );
   }, [theme]);
-
   if (!theme) return null;
 
   return (
