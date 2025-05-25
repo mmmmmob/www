@@ -1,6 +1,6 @@
 # theppitak.me
 
-![Theppitak M_](https://github.com/mmmmmob/me.theppitak/assets/141404845/29d12b14-2540-4953-9c58-075005d9442d)
+![Theppitak M_](https://github.com/user-attachments/assets/a68fa078-4a0d-46fc-a42e-7e070b92083b)
 
 theppitak.me , my portfolio site with markdown blogs built with React, NPM, and Next.js. Design with cleanliness and simplicity in mind.
 
@@ -83,7 +83,7 @@ The blog system supports rendering Markdown files with front matter metadata. Th
 To create a new blog post:
 
 1. **Create a Markdown file**  
-   Save your post in the `src/content/blogs/` directory (or your designated content folder) with a `.md` extension, e.g. `my-first-post.md`.
+   Save your post in the `src/posts/` directory with a `.md` extension, e.g. `my-first-post.md`.
 
 2. **Add front matter to the top of the file**  
    Use the following structure to define metadata for the post:
@@ -94,8 +94,8 @@ To create a new blog post:
    date: "2025-05-25"
    slug: "test-post"
    excerpt: "A brief description of what this post is about."
-   image: "/path/to/image.jpg"
-   draft: false
+   image: "/path/to/image.jpg" //optional
+   draft: false //optional
    ---
    ```
 
@@ -109,7 +109,7 @@ To create a new blog post:
    npm run dev
    ```
 
-Then navigate to the Blogs section to see your post. Posts marked with `draft:` true will not be shown in production.
+Then navigate to the Blogs section to see your post. Posts marked with `draft: true` will not be shown in production.
 
 ## Technologies Used
 
