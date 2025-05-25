@@ -56,9 +56,11 @@ export default async function BlogPost(props: {
   const post = await getPostBySlug(params.slug);
   if (!post) notFound();
   return (
-    <div className="p-5">
-      <BackButton />
-      <div className="prose dark:prose-invert p-5">
+    <div className="flex w-full flex-col p-5">
+      <div>
+        <BackButton />
+      </div>
+      <div className="prose dark:prose-invert justify-center self-center p-5">
         {!post && (
           <div className="flex items-center justify-center">
             <div className="loading loading-ring loading-xl"></div>
