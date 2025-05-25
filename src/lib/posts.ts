@@ -10,6 +10,7 @@ export interface PostMetadata {
   slug: string;
   excerpt: string;
   image?: string;
+  draft?: boolean;
 }
 
 export interface Post {
@@ -55,6 +56,7 @@ export function getAllPostsList(): PostMetadata[] {
         slug,
       };
     })
+    .filter((post) => !post.draft)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
