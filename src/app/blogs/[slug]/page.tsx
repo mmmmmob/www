@@ -23,7 +23,7 @@ export async function generateMetadata(props: {
   // 1) direct image link, 2) file in /public/og, 3) auto-generate from title if nothing is provided
   const imageUrl = post.meta.image?.startsWith("http")
     ? post.meta.image
-    : `https://theppitak.me/${post.meta.image ? `og/${post.meta.image}` : `api/og?title=${post.meta.title}&desc=${post.meta.excerpt}`}`;
+    : `https://theppitak.me/${post.meta.image ? `og/${post.meta.image}` : `api/og?title=${post.meta.title}`}`;
 
   return {
     title: post.meta.title,
