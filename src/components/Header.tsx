@@ -1,5 +1,6 @@
 "use client";
 
+import { APP_VERSION } from "@/lib/version";
 import Image from "next/image";
 import Link from "next/link";
 import CurrentTime from "./snippets/CurrentTime";
@@ -24,7 +25,12 @@ const Header = () => {
       </div>
       <div className="absolute left-1/2 -translate-x-1/2">
         <Link href="/" className="block size-10 -translate-y-1 rounded-md p-1">
-          <Image src="/logo.png" width={150} height={150} alt="avatar" />
+          <div
+            className="tooltip tooltip-right tooltip-info dark:tooltip-warning"
+            data-tip={`v.${APP_VERSION}`}
+          >
+            <Image src="/logo.png" width={150} height={150} alt="avatar" />
+          </div>
         </Link>
       </div>
     </div>

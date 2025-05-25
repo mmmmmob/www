@@ -7,90 +7,112 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
 
     const hasTitle = searchParams.has("title");
-    const hasDescription = searchParams.has("desc");
 
     const title = hasTitle
       ? searchParams.get("title")?.slice(0, 100)
       : "Latest Blog";
 
-    const description = hasDescription
-      ? searchParams.get("desc")?.slice(0, 160)
-      : "";
+    const isThai = /[\u0E00-\u0E7F]/.test(title ?? "");
+    const fontName = isThai ? "IBM+Plex+Sans+Thai+Looped" : "Geist+Mono";
+
+    async function loadGoogleFont(font: string, text: string | undefined) {
+      const url = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(text ?? "")}`;
+
+      const css = await fetch(url).then(res => res.text());
+      const resource = css.match(
+        /src: url\((.+)\) format\('(opentype|truetype)'\)/,
+      );
+
+      if (resource) {
+        const response = await fetch(resource[1]);
+        if (response.status === 200) {
+          return await response.arrayBuffer();
+        }
+      }
+
+      throw new Error("failed to load font data");
+    }
 
     return new ImageResponse(
       React.createElement(
         "div",
         {
           style: {
-            backgroundColor: "black",
-            backgroundSize: "150px 150px",
+            display: "flex",
             height: "100%",
             width: "100%",
-            display: "flex",
-            textAlign: "center",
             alignItems: "center",
             justifyContent: "center",
+            letterSpacing: "-.02em",
+            fontWeight: 700,
+            background: "white",
             flexDirection: "column",
-            flexWrap: "nowrap",
           },
         },
-        // Vercel logo image
-        React.createElement(
-          "div",
-          {
-            style: {
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              justifyItems: "center",
+        [
+          React.createElement(
+            "div",
+            {
+              style: {
+                left: 42,
+                top: 42,
+                position: "absolute",
+                display: "flex",
+                alignItems: "center",
+              },
             },
-          },
-          React.createElement("img", {
-            alt: "Vercel",
-            height: 200,
-            width: 232,
-            src: "data:image/svg+xml,%3Csvg width='116' height='100' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M57.5 0L115 100H0L57.5 0z' /%3E%3C/svg%3E",
-            style: { margin: "0 30px" },
-          }),
-        ),
-        // Title text
-        React.createElement(
-          "div",
-          {
-            style: {
-              fontSize: 60,
-              fontStyle: "normal",
-              letterSpacing: "-0.025em",
-              color: "white",
-              marginTop: 30,
-              padding: "0 120px",
-              lineHeight: 1.4,
-              whiteSpace: "pre-wrap",
+            [
+              React.createElement("span", {
+                style: {
+                  width: 24,
+                  height: 24,
+                  background: "black",
+                },
+              }),
+              React.createElement(
+                "span",
+                {
+                  style: {
+                    marginLeft: 8,
+                    fontSize: 20,
+                  },
+                },
+                "theppitak.me",
+              ),
+            ],
+          ),
+          React.createElement(
+            "div",
+            {
+              style: {
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                padding: "20px 50px",
+                margin: "0 42px",
+                fontSize: 40,
+                width: "auto",
+                maxWidth: 700,
+                textAlign: "center",
+                backgroundColor: "black",
+                color: "white",
+                lineHeight: 1.4,
+              },
             },
-          },
-          title,
-        ),
-        // Description text
-        React.createElement(
-          "div",
-          {
-            style: {
-              fontSize: 40,
-              fontStyle: "normal",
-              letterSpacing: "-0.025em",
-              color: "white",
-              marginTop: 30,
-              padding: "0 120px",
-              lineHeight: 1.4,
-              whiteSpace: "pre-wrap",
-            },
-          },
-          description,
-        ),
+            title,
+          ),
+        ],
       ),
       {
         width: 1200,
         height: 630,
+        fonts: [
+          {
+            name: isThai ? "IBM Plex Sans Thai Looped" : "Geist Mono",
+            data: await loadGoogleFont(fontName, title),
+            style: "normal",
+          },
+        ],
       },
     );
   } catch (error) {

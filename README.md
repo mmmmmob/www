@@ -2,7 +2,7 @@
 
 ![Theppitak M_](https://github.com/mmmmmob/me.theppitak/assets/141404845/29d12b14-2540-4953-9c58-075005d9442d)
 
-theppitak.me , my portfolio site built with React, NPM, and Next.js. Design with cleanliness and simplicity in mind.
+theppitak.me , my portfolio site with markdown blogs built with React, NPM, and Next.js. Design with cleanliness and simplicity in mind.
 
 ## Table of Contents
 
@@ -15,6 +15,7 @@ theppitak.me , my portfolio site built with React, NPM, and Next.js. Design with
     - [Installation](#installation)
     - [Running the Project](#running-the-project)
     - [Now Playing Bar](#now-playing-bar)
+    - [Blogs](#blogs)
   - [Technologies Used](#technologies-used)
   - [Contributing](#contributing)
   - [License](#license)
@@ -24,7 +25,7 @@ theppitak.me , my portfolio site built with React, NPM, and Next.js. Design with
 - Responsive design
 - Dark mode support
 - Projects showcase
-- Blog Post with SSR for better SEO / OpenGraph sharing with preview
+- Markdown Blog Post with SSR for better SEO / OpenGraph sharing with preview
 
 ## Demo
 
@@ -75,11 +76,46 @@ You can opt-out of this feature by removing the `<NowPlaying/>` component from `
 
 (special thanks for initial code reference before adjustments from [@theodorusclarence](https://github.com/theodorusclarence) blog [post](https://theodorusclarence.com/blog/spotify-now-playing))
 
+### Blogs
+
+The blog system supports rendering Markdown files with front matter metadata. This allows clean formatting, SEO optimization, and easy content management.
+
+To create a new blog post:
+
+1. **Create a Markdown file**  
+   Save your post in the `src/content/blogs/` directory (or your designated content folder) with a `.md` extension, e.g. `my-first-post.md`.
+
+2. **Add front matter to the top of the file**  
+   Use the following structure to define metadata for the post:
+
+   ```md
+   ---
+   title: "My First Blog Post"
+   date: "2025-05-25"
+   slug: "test-post"
+   excerpt: "A brief description of what this post is about."
+   image: "/path/to/image.jpg"
+   draft: false
+   ---
+   ```
+
+3. **Write your content**
+   Below the front matter, write your blog content in standard Markdown.
+
+4. **Preview your post**
+   Run the development server with:
+
+   ```sh
+   npm run dev
+   ```
+
+Then navigate to the Blogs section to see your post. Posts marked with `draft:` true will not be shown in production.
+
 ## Technologies Used
 
-- **Frontend**: [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/), [daisyUI](https://daisyui.com/) and [react-icons](https://react-icons.github.io/react-icons/)
-- **Framework / Bundler**: [Next.js](https://nextjs.org/)
-- **JavaScript Runtime and Package Manager**: [Node.js](https://nodejs.org/)
+- **UI Library**: [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/), [daisyUI](https://daisyui.com/) and [react-icons](https://react-icons.github.io/react-icons/)
+- **Main Framework + Bundler**: [Next.js](https://nextjs.org/)
+- **JavaScript Runtime + Package Manager**: [Node.js](https://nodejs.org/)
 
 ## Contributing
 
