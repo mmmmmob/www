@@ -7,8 +7,8 @@ const Title = () => {
         <Image
           src="/avatar.jpg"
           alt="avatar"
-          width={80}
-          height={80}
+          width={128}
+          height={128}
           className="mr-3 size-20 self-center rounded-md max-sm:size-32"
         />
         <div className="self-center text-start">
