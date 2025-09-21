@@ -1,5 +1,6 @@
 import { ProjectElement } from "@/types/Projects";
 import { Stack } from "@/types/Stack";
+import Image from "next/image";
 import Link from "next/link";
 import StacksTag from "./StackTag";
 
@@ -8,8 +9,10 @@ function ProjectCard(project: ProjectElement) {
     <div className="flex flex-col rounded-lg bg-gray-400/20 p-4 dark:bg-slate-800">
       <div className="flex flex-col">
         <div className="flex">
-          <img
+          <Image
             src={project.icon}
+            width={40}
+            height={40}
             alt="icon"
             className="mr-3 size-12 self-center rounded-md"
           />
