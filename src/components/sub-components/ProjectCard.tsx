@@ -11,8 +11,8 @@ function ProjectCard(project: ProjectElement) {
         <div className="flex">
           <Image
             src={project.icon}
-            width={40}
-            height={40}
+            width={48}
+            height={48}
             alt="icon"
             className="mr-3 size-12 self-center rounded-md"
           />
