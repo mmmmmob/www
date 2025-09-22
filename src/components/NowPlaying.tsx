@@ -1,7 +1,6 @@
 "use client";
 
 import { useNowPlaying } from "@/hooks/useNowPlaying";
-import Image from "next/image";
 import { BiSolidBarChartAlt2 } from "react-icons/bi";
 
 export const NowPlaying = () => {
@@ -39,8 +38,8 @@ export const NowPlaying = () => {
           ) : (
             <div className="flex self-center">
               <BiSolidBarChartAlt2 size={18} className="mx-1" />
-              <Image
-                src={result?.albumImageUrl ?? "/default-album-art.png"}
+              <img
+                src={result?.albumImageUrl ?? "https://placecats.com/20/20"}
                 alt={`${result?.title ?? "Unknown"} album art`}
                 width={20}
                 height={20}
