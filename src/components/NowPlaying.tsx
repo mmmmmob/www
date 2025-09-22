@@ -1,7 +1,6 @@
 "use client";
 
 import { useNowPlaying } from "@/hooks/useNowPlaying";
-import Image from "next/image";
 import { BiSolidBarChartAlt2 } from "react-icons/bi";
 
 export const NowPlaying = () => {
