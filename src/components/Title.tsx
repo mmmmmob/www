@@ -9,6 +9,7 @@ const Title = () => {
           alt="avatar"
           width={128}
           height={128}
+          sizes="(max-width: 639px) 128px, 80px"
           className="mr-3 size-20 self-center rounded-md max-sm:size-32"
         />
         <div className="self-center text-start">

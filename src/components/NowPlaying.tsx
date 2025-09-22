@@ -39,9 +39,9 @@ export const NowPlaying = () => {
           ) : (
             <div className="flex self-center">
               <BiSolidBarChartAlt2 size={18} className="mx-1" />
-              <Image
-                src={result?.albumImageUrl ?? "/default-album-art.png"}
-                alt={`${result?.title ?? "Unknown"} album art`}
+              <img
+                src={result?.albumImageUrl}
+                alt={`${result?.title} album art`}
                 width={20}
                 height={20}
                 className="mx-1 size-5 self-end rounded-md"
