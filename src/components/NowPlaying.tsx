@@ -39,7 +39,7 @@ export const NowPlaying = () => {
             <div className="flex self-center">
               <BiSolidBarChartAlt2 size={18} className="mx-1" />
               <img
-                src={result?.albumImageUrl ?? "/default-album-art.png"}
+                src={result?.albumImageUrl ?? "https://placecats.com/20/20"}
                 alt={`${result?.title ?? "Unknown"} album art`}
                 width={20}
                 height={20}
