@@ -33,7 +33,7 @@ export default function RootLayout({
             </div>
           </main>
           <footer className="sticky bottom-0 w-full">
-            <NowPlaying />
+            {/* <NowPlaying /> */}
             <Footer />
           </footer>
         </div>
